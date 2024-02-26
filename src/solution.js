@@ -12,18 +12,29 @@
 // `salesTax` is a decimal number, like 0.065
 function createSalesProduct(product, salesTax) {
   return {
-    name: product.name,
-    availableSizes: product.availableSizes,
+    ...product,
     salesTax,
     priceInCents: product.priceInCents * (1 + salesTax),
   };
 }
 
+// function createSalesProduct(product, salesTax) {
+//   return {
+//     name: product.name,
+//     availableSizes: product.availableSizes,
+//     salesTax,
+//     priceInCents: product.priceInCents * (1 + salesTax),
+//   };
+// }
+
 function joinSizes(productA, productB) {
-  const result = [];
-  return result.concat(productA.availableSizes, productB.availableSizes);
+  return [...productA.availableSizes, ...productB.availableSizes]
 }
 
+// function joinSizes(productA, productB) {
+//   const result = [];
+//   return result.concat(productA.availableSizes, productB.availableSizes);
+// }t
 module.exports = {
   createSalesProduct,
   joinSizes,
